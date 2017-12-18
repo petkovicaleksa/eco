@@ -65,18 +65,19 @@ public class IndexSliderPage extends Page {
         photo(driver);
 
         clickOnSave(driver);
-           is.setId(getIdFromLastRow(driver, "data-index-slide-id"));
-//        WebElement lastRow = findLastRow(driver);
-//        WebElement disableButton = lastRow.findElement(By.xpath("\"//*[@id='rows-table']/tbody/tr[9]/td[7]/div/button[1]\""));
-//        String id = disableButton.getAttribute("data-photo-gallery-id");
-//        is.setId(Integer.valueOf(id));
+//           is.setId(getIdFromLastRow(driver, "data-index-slide-id"));
+        WebElement lastRow = findLastRow(driver);
+//        WebElement disableButton = lastRow.findElement(By.xpath("//*[@id='rows-table']/tbody/tr[22]/td[7]/div/button[1]"));
+//        String id = disableButton.getAttribute("data-index-slide-id");
+        String id = lastRow.getAttribute("data-index-slide-id");
+        is.setId(Integer.valueOf(id));
         return is;
 
     }
 
     public IndexSlider editIndexSlider(WebDriver driver) {
         IndexSlider is = new IndexSlider();
-        is.setId(getIdFromWeb(driver));
+//        is.setId(getIdFromWeb(driver));
         choosOptionFromLastRow(driver, By.className("glyphicon-pencil"));
         is.setTitle(sendTextOnField(driver, By.id("title")));
         is.setDescription(sendTextOnField(driver, By.id("description")));
