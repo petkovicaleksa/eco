@@ -90,12 +90,21 @@ public void clickOnElement(WebDriver driver, By locator) {
         Select combo = new Select(linkType);
         combo.selectByValue("InternalLink");
     }
-  public void linkTypeComboEdit(WebDriver driver) {
+  public String linkTypeComboEdit(WebDriver driver) {
         WebElement linkType = waitForElementClickability(driver, By.id("link_type"));
 
         Select combo = new Select(linkType);
         combo.selectByValue("ExternalLink");
+        return "ExternalLink";
+        
     }
+  public String linkTypeComboEdit1(WebDriver driver) {
+        WebElement linkType = waitForElementClickability(driver, By.id("link_type"));
+
+        Select combo = new Select(linkType);
+        combo.selectByValue("InternalLink");
+        return "InternalLink";
+  }
       public int getIdFromLastRow(WebDriver driver, String attributeName) {
         WebElement lastRow = findLastRow(driver);
         String id = lastRow.getAttribute(attributeName);

@@ -62,6 +62,7 @@ public class TestIndexSlider {
      @Test
    public void testCreateNewIndexSlider() {
         IndexSlider indexWeb = indexSliderPage.createNewIndexSlider(driver);
+        
          System.out.println("IndexSlider is saved");
          IndexSlider indexDb = DbConnection.getIndex("SELECT * FROM `cms_index_slides` WHERE id = "+indexWeb.getId());
 //IndexSlider indexDb = DbConnection.getIndex("SELECT * FROM `cms_index_slides` WHERE id = "+indexWeb.getId());

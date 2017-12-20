@@ -41,8 +41,7 @@ public class IndexSliderPage extends Page {
     }
 
     private void clickOnSave(WebDriver driver) {
-//         WebElement clickOnSave = wait.until(ExpectedConditions.elementToBeClickable(By.id("new_indexSlide_submit")));
-//        clickOnSave.click();
+
         clickOnElement(driver, By.id("new_indexSlide_submit"));
     }
 
@@ -55,8 +54,8 @@ public class IndexSliderPage extends Page {
 
         is.setDescription(sendTextOnField(driver, By.id("description")));
 
-        linkTypeCombo(driver);
-
+//        linkTypeCombo(driver);
+        is.setLinkType(linkTypeComboEdit1(driver));
         is.setLinkLabel(sendTextOnField(driver, By.id("link_label")));
 
 //        setInternalLinkUrl(driver, By.id("internal_link_url"));
@@ -81,22 +80,30 @@ public class IndexSliderPage extends Page {
         choosOptionFromLastRow(driver, By.className("glyphicon-pencil"));
         is.setTitle(sendTextOnField(driver, By.id("title")));
         is.setDescription(sendTextOnField(driver, By.id("description")));
-        linkTypeComboEdit(driver);
+
+        is.setLinkType(linkTypeComboEdit(driver));
         is.setLinkLabel(sendTextOnField(driver, By.id("link_label")));
         is.setInternalLinkUrl(sendUrlOnField(driver, By.id("external_link_url")));
         photo(driver);
         clickOnSave(driver);
-        is.setId(getIdFromWeb(driver));
+//        is.setId(getIdFromWeb(driver));
+        WebElement lastRow = findLastRow(driver);
+//        WebElement disableButton = lastRow.findElement(By.xpath("//*[@id='rows-table']/tbody/tr[22]/td[7]/div/button[1]"));
+//        String id = disableButton.getAttribute("data-index-slide-id");
+        String id = lastRow.getAttribute("data-index-slide-id");
+        is.setId(Integer.valueOf(id));
         return is;
     }
-    public IndexSlider deleteIndexSlider(WebDriver driver){
-    IndexSlider is = new IndexSlider();
-    
+
+    public IndexSlider deleteIndexSlider(WebDriver driver) {
+        IndexSlider is = new IndexSlider();
+
         choosOptionFromLastRow(driver, By.className("glyphicon-trash"));
         clickOnElement(driver, By.className("btn-danger"));
         return is;
     }
-       public int getIdFromWeb(WebDriver driver){
-          return getIdFromLastRow(driver, "data-photo-gallery-id");
-       }
+
+    public int getIdFromWeb(WebDriver driver) {
+        return getIdFromLastRow(driver, "data-photo-gallery-id");
+    }
 }
