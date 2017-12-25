@@ -31,7 +31,7 @@ public class UsersPage extends Page {
         us.setEmail(sendEmailOnField(driver, By.id("email")));
         clickOnSave(driver);
         
-        Thread.sleep(3000);
+        Thread.sleep(5000);
                 
         WebElement lastRow = findLastRow(driver);
         String id = lastRow.getAttribute("data-user-id");
@@ -48,7 +48,7 @@ public class UsersPage extends Page {
         us.setEmail(sendEmailOnField(driver, By.id("email")));
         clickOnSave(driver);
         
-        Thread.sleep(3000);
+        Thread.sleep(5000);
         
         WebElement lastRow = findLastRow(driver);
         String id = lastRow.getAttribute("data-user-id");
@@ -56,11 +56,12 @@ public class UsersPage extends Page {
         return us;
     }
 
-    public Users deleteUser(WebDriver driver) {
+    public Users deleteUser(WebDriver driver) throws InterruptedException {
         Users us = new Users();
 
         choosOptionFromLastRow(driver, By.className("glyphicon-trash"));
         clickOnElement(driver, By.className("btn-danger"));
+         Thread.sleep(5000);
         return us;
     }
 }

@@ -5,19 +5,18 @@
  */
 package photo;
 
+import static com.sun.xml.internal.ws.dump.LoggingDumpTube.Position.After;
+import static com.sun.xml.internal.ws.dump.LoggingDumpTube.Position.Before;
 import db.DbConnection;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pageUtil.PageUtilities;
 import pages.basics.HomePage;
 import pages.basics.LoginPage;
-import pages.indexPage.IndexSliderPage;
 import pages.photo.PhotoPage;
 import setup.SeleniumProperties;
 import domen.Photo;

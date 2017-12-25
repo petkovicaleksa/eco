@@ -82,7 +82,7 @@ public class TestUsers {
      }
      
      @Test
-     public void testDeleteUser(){
+     public void testDeleteUser() throws InterruptedException{
      Users userWeb = usersPage.deleteUser(driver);
      Boolean isDeleted = DbConnection.isDeleted("SELECT * FROM `cms_users` WHERE id = "+userWeb.getId());
       Assert.assertEquals(Boolean.TRUE, isDeleted);
