@@ -15,7 +15,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class PageUtilities {
 
     public static WebDriver initWebDriver(WebDriver driver) {
-//        System.setProperty("webdriver.chrome.driver", "D:\\QA\\Predavanje 25 DB\\Cas25\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:\\QA\\Predavanje 25 DB\\Cas25\\chromedriver.exe");
 // System.setProperty("webdriver.chrome.driver", "/Users/qa/Desktop/workspace/Cas23");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -33,5 +33,8 @@ public class PageUtilities {
 
     public static String getRandomUrl() {
         return "http://".concat(getRandomText()).concat(".te");
+    }
+    public static String getRandomEmail(){
+    return "aaaa".concat(getRandomText()).concat("@students.nyu.edu");
     }
 }

@@ -14,6 +14,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import domen.Photo;
+import domen.Users;
 /**
  *
  * @author SonjaAleksa
@@ -69,6 +70,7 @@ public class DbConnection {
         }
         return i;
         }
+     
      public static Photo getPhoto(String query){
             Photo p = new Photo();
         try {
@@ -94,6 +96,31 @@ public class DbConnection {
             Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return p;
+        }
+       public static Users getUser(String query){
+            Users i = new Users();
+        try {
+            
+            Statement st = conn.createStatement();
+            ResultSet rs =  st.executeQuery(query);
+            
+            System.out.println(query);
+            
+            if(rs.next()){
+                i.setId(rs.getInt(1));
+                i.setUserName(rs.getString(2));
+                i.setFirstName(rs.getString(6));
+                i.setLastName(rs.getString(7));
+                i.setEmail(rs.getString(5));
+                i.setDeleted(false);
+                } else {
+                i.setDeleted(true);
+            
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DbConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return i;
         }
      public static Boolean isDeleted(String query) {
 

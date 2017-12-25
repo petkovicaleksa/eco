@@ -9,6 +9,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pages.indexPage.IndexSliderPage;
 import pages.photo.PhotoPage;
+import page.users.UsersPage;
+import static pages.basics.LoginPage.driver;
 
 /**
  *
@@ -27,6 +29,13 @@ public class HomePage extends Page {
         clickOnElement(driver, By.className("fa-photo"));
         PhotoPage ph = new PhotoPage();
         return ph;
+    }
+
+    public UsersPage clickOnAllUsers(WebDriver driver) {
+
+        clickOnElement(driver, By.linkText("All Users"));
+        UsersPage up = new UsersPage();
+        return up;
     }
 
 }

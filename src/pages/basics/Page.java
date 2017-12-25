@@ -64,8 +64,15 @@ public void clickOnElement(WebDriver driver, By locator) {
         urlField.sendKeys(url);
         return url;
     }
+    public String sendEmailOnField(WebDriver driver, By locator) {
+        WebElement emailField = waitForWebElement(driver, locator);
+        emailField.clear();
+        String email = PageUtilities.getRandomEmail();
+        emailField.sendKeys(email);
+        return email;
+    }
      public WebElement findLastRow(WebDriver driver) {
-        WebElement table = driver.findElement(By.id("rows-table"));
+        WebElement table = waitForElementClickability(driver, By.id("rows-table"));
         List<WebElement> rows = table.findElements(By.tagName("tr"));
         WebElement lastRow = rows.get(rows.size() - 1);
         return lastRow;
@@ -81,8 +88,8 @@ public void clickOnElement(WebDriver driver, By locator) {
 //        return sendTextOnField(driver, By.id("index_slide_photo"), "C:\\Users\\SonjaAleksa\\Desktop\\222.jpg");
       public void setPhoto(WebDriver driver, By locator) {
         WebElement photo = waitForWebElement(driver, locator);
-        photo.sendKeys("/Users/qa/Desktop/1.jpg");
-//        photo.sendKeys("C:\\Users\\SonjaAleksa\\Desktop\\3.jpg");
+//        photo.sendKeys("/Users/qa/Desktop/1.jpg");
+        photo.sendKeys("C:\\Users\\SonjaAleksa\\Desktop\\3.jpg");
     }
  public void linkTypeCombo(WebDriver driver) {
         WebElement linkType = waitForElementClickability(driver, By.id("link_type"));

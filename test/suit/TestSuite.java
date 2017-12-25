@@ -13,13 +13,14 @@ import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import photo.TestPhoto;
+import users.TestUsers;
 
 /**
  *
  * @author SonjaAleksa
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({TestIndexSlider.class, TestPhoto.class})
+@Suite.SuiteClasses({TestIndexSlider.class, TestPhoto.class, TestUsers.class})
 public class TestSuite {
 
     @BeforeClass

@@ -48,23 +48,21 @@ public class IndexSliderPage extends Page {
     public IndexSlider createNewIndexSlider(WebDriver driver) {
         IndexSlider is = new IndexSlider();
 
-//        clickOnAddIndex(driver);
+
         clickOnElement(driver, By.className("glyphicon-plus"));
         is.setTitle(sendTextOnField(driver, By.id("title")));
 
         is.setDescription(sendTextOnField(driver, By.id("description")));
 
-//        linkTypeCombo(driver);
         is.setLinkType(linkTypeComboEdit1(driver));
         is.setLinkLabel(sendTextOnField(driver, By.id("link_label")));
 
-//        setInternalLinkUrl(driver, By.id("internal_link_url"));
         is.setInternalLinkUrl(sendUrlOnField(driver, By.id("internal_link_url")));
 
         photo(driver);
 
         clickOnSave(driver);
-//           is.setId(getIdFromLastRow(driver, "data-index-slide-id"));
+
         WebElement lastRow = findLastRow(driver);
 //        WebElement disableButton = lastRow.findElement(By.xpath("//*[@id='rows-table']/tbody/tr[22]/td[7]/div/button[1]"));
 //        String id = disableButton.getAttribute("data-index-slide-id");
@@ -86,10 +84,9 @@ public class IndexSliderPage extends Page {
         is.setInternalLinkUrl(sendUrlOnField(driver, By.id("external_link_url")));
         photo(driver);
         clickOnSave(driver);
-//        is.setId(getIdFromWeb(driver));
+//    
         WebElement lastRow = findLastRow(driver);
-//        WebElement disableButton = lastRow.findElement(By.xpath("//*[@id='rows-table']/tbody/tr[22]/td[7]/div/button[1]"));
-//        String id = disableButton.getAttribute("data-index-slide-id");
+
         String id = lastRow.getAttribute("data-index-slide-id");
         is.setId(Integer.valueOf(id));
         return is;

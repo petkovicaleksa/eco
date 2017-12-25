@@ -22,13 +22,14 @@ import pages.photo.PhotoPage;
 import setup.SeleniumProperties;
 import domen.Photo;
 import org.junit.Assert;
+
 /**
  *
  * @author SonjaAleksa
  */
 public class TestPhoto {
-    
-  private static WebDriver driver;
+
+    private static WebDriver driver;
 
     private PhotoPage photoPage;
 
@@ -37,51 +38,52 @@ public class TestPhoto {
 
     @BeforeClass
     public static void testLogin() {
-             driver = PageUtilities.initWebDriver(driver);
+        driver = PageUtilities.initWebDriver(driver);
         loginPage = new LoginPage();
         SeleniumProperties.init();
         homePage = loginPage.login(driver);
         DbConnection.getConnection();
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
-        //         DbConnection.close();
+        DbConnection.close();
 //         driver.quit();
     }
-    
+
     @Before
     public void testOpenPhotoGalery() {
         photoPage = homePage.clickOnPhotoGalery(driver);
     }
-    
+
     @After
     public void tearDown() {
+        System.out.println("Page title is: " + driver.getTitle());
     }
 
-     @Test
-     public void testCreateNewPhotoGalery() {
-     Photo photoWeb = photoPage.createNewPhotoGalery(driver);
-        Photo photoDb = DbConnection.getPhoto("SELECT * FROM `cms_photo_galleries` WHERE id ="+photoWeb.getId());
-         Assert.assertEquals(photoWeb.getId(), photoDb.getId());
-//         Assert.assertEquals(photoWeb.getTitle(), photoDb.getTitle());
-//         Assert.assertEquals(photoWeb.getDescription(), photoDb.getDescription());
-     }
-     
-     @Test
-     public void testEditPhotoGalery(){
-     Photo photoWeb = photoPage.editPhotoGalery(driver);
-       Photo photoDb = DbConnection.getPhoto("SELECT * FROM `cms_photo_galleries` WHERE id ="+photoWeb.getId());
+    @Test
+    public void testCreateNewPhotoGalery() {
+        Photo photoWeb = photoPage.createNewPhotoGalery(driver);
+        Photo photoDb = DbConnection.getPhoto("SELECT * FROM `cms_photo_galleries` WHERE id =" + photoWeb.getId());
         Assert.assertEquals(photoWeb.getId(), photoDb.getId());
-         Assert.assertEquals(photoWeb.getTitle(), photoDb.getTitle());
-     
-         Assert.assertEquals(photoWeb.getDescription(), photoDb.getDescription());
-     }
-     
-     @Test
-     public void testDeletePhotoGalery(){
-     Photo photoDel = photoPage.deletePhotoGalery(driver);
-     Boolean isDeleted = DbConnection.isDeleted("SELECT * FROM `cms_index_slides` WHERE id ="+photoDel.getId());
-         Assert.assertEquals(Boolean.TRUE, isDeleted);
-     }
+        Assert.assertEquals(photoWeb.getTitle(), photoDb.getTitle());
+        Assert.assertEquals(photoWeb.getDescription(), photoDb.getDescription());
+    }
+
+    @Test
+    public void testEditPhotoGalery() {
+        Photo photoWeb = photoPage.editPhotoGalery(driver);
+        Photo photoDb = DbConnection.getPhoto("SELECT * FROM `cms_photo_galleries` WHERE id =" + photoWeb.getId());
+        Assert.assertEquals(photoWeb.getId(), photoDb.getId());
+        Assert.assertEquals(photoWeb.getTitle(), photoDb.getTitle());
+
+        Assert.assertEquals(photoWeb.getDescription(), photoDb.getDescription());
+    }
+
+    @Test
+    public void testDeletePhotoGalery() {
+        Photo photoDel = photoPage.deletePhotoGalery(driver);
+        Boolean isDeleted = DbConnection.isDeleted("SELECT * FROM `cms_index_slides` WHERE id =" + photoDel.getId());
+        Assert.assertEquals(Boolean.TRUE, isDeleted);
+    }
 }
