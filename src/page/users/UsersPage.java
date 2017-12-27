@@ -30,9 +30,9 @@ public class UsersPage extends Page {
         us.setLastName(sendTextOnField(driver, By.id("last_name")));
         us.setEmail(sendEmailOnField(driver, By.id("email")));
         clickOnSave(driver);
-        
+
         Thread.sleep(5000);
-                
+
         WebElement lastRow = findLastRow(driver);
         String id = lastRow.getAttribute("data-user-id");
         us.setId(Integer.valueOf(id));
@@ -47,9 +47,9 @@ public class UsersPage extends Page {
         us.setLastName(sendTextOnField(driver, By.id("last_name")));
         us.setEmail(sendEmailOnField(driver, By.id("email")));
         clickOnSave(driver);
-        
+
         Thread.sleep(5000);
-        
+
         WebElement lastRow = findLastRow(driver);
         String id = lastRow.getAttribute("data-user-id");
         us.setId(Integer.valueOf(id));
@@ -61,7 +61,7 @@ public class UsersPage extends Page {
 
         choosOptionFromLastRow(driver, By.className("glyphicon-trash"));
         clickOnElement(driver, By.className("btn-danger"));
-         Thread.sleep(5000);
+        Thread.sleep(5000);
         return us;
     }
 }

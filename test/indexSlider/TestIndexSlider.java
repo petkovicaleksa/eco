@@ -19,6 +19,7 @@ import pages.indexPage.IndexSliderPage;
 import setup.SeleniumProperties;
 import domen.IndexSlider;
 import org.junit.Assert;
+
 /**
  *
  * @author SonjaAleksa
@@ -43,15 +44,15 @@ public class TestIndexSlider {
 
     @AfterClass
     public static void tearDownClass() {
-         DbConnection.close();
-//         driver.quit();
+        DbConnection.close();
+        driver.quit();
     }
 
     @Before
     public void testOpenIndexSlider() {
         System.out.println("Page title is: " + driver.getTitle());
         indexSliderPage = homePage.clickOnIndexSlider(driver);
-      
+
     }
 
     @After
@@ -59,36 +60,37 @@ public class TestIndexSlider {
         System.out.println("Page title is: " + driver.getTitle());
     }
 
-     @Test
-   public void testCreateNewIndexSlider() {
+    @Test
+    public void testCreateNewIndexSlider() {
         IndexSlider indexWeb = indexSliderPage.createNewIndexSlider(driver);
-        
-         System.out.println("IndexSlider is saved");
-         IndexSlider indexDb = DbConnection.getIndex("SELECT * FROM `cms_index_slides` WHERE id = "+indexWeb.getId());
-//IndexSlider indexDb = DbConnection.getIndex("SELECT * FROM `cms_index_slides` WHERE id = "+indexWeb.getId());
+
+        System.out.println("IndexSlider is saved");
+        IndexSlider indexDb = DbConnection.getIndex("SELECT * FROM `cms_index_slides` WHERE id = " + indexWeb.getId());
+
         Assert.assertEquals(indexWeb.getId(), indexDb.getId());
         Assert.assertEquals(indexWeb.getTitle(), indexDb.getTitle());
         Assert.assertEquals(indexWeb.getDescription(), indexDb.getDescription());
         Assert.assertEquals(indexWeb.getLinkType(), indexDb.getLinkType());
         Assert.assertEquals(indexWeb.getLinkLabel(), indexDb.getLinkLabel());
-   }
-   @Test 
-   public void testEditIndexSlider() {
-   IndexSlider indexWeb = indexSliderPage.editIndexSlider(driver);
-//     IndexSlider indexDb = DbConnection.getIndex("SELECT * FROM `cms_index_slides` WHERE id = "+299);
-     IndexSlider indexDb = DbConnection.getIndex("SELECT * FROM `cms_index_slides` WHERE id = "+indexWeb.getId());
+    }
+
+    @Test
+    public void testEditIndexSlider() {
+        IndexSlider indexWeb = indexSliderPage.editIndexSlider(driver);
+
+        IndexSlider indexDb = DbConnection.getIndex("SELECT * FROM `cms_index_slides` WHERE id = " + indexWeb.getId());
         Assert.assertEquals(indexWeb.getId(), indexDb.getId());
         Assert.assertEquals(indexWeb.getTitle(), indexDb.getTitle());
         Assert.assertEquals(indexWeb.getDescription(), indexDb.getDescription());
         Assert.assertEquals(indexWeb.getLinkType(), indexDb.getLinkType());
         Assert.assertEquals(indexWeb.getLinkLabel(), indexDb.getLinkLabel());
-   }
-   @Test
+    }
+
+    @Test
     public void testDeleteIndexSlider() {
-    IndexSlider indexDel = indexSliderPage.deleteIndexSlider(driver);
-      Boolean isDeleted = DbConnection.isDeleted("SELECT * FROM `cms_index_slides` WHERE id =" + indexDel.getId());
+        IndexSlider indexDel = indexSliderPage.deleteIndexSlider(driver);
+        Boolean isDeleted = DbConnection.isDeleted("SELECT * FROM `cms_index_slides` WHERE id =" + indexDel.getId());
         Assert.assertEquals(Boolean.TRUE, isDeleted);
     }
-        
-    
+
 }

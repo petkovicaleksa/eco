@@ -47,7 +47,7 @@ public class TestPhoto {
     @AfterClass
     public static void tearDownClass() {
         DbConnection.close();
-//         driver.quit();
+        driver.quit();
     }
 
     @Before

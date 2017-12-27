@@ -40,7 +40,7 @@ public class HomePage extends Page {
 
         clickOnElement(driver, By.linkText("All Users"));
 
-waitForWebElement(driver, By.id("rows-table"));
+        waitForWebElement(driver, By.id("rows-table"));
         try {
             Thread.sleep(3000);
         } catch (InterruptedException ex) {

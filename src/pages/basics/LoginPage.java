@@ -23,15 +23,15 @@ public class LoginPage extends Page {
 
     public HomePage login(WebDriver driver) {
         driver.get("http://ecotest.school.cubes.rs/admin_session/login");
-//        WebElement username = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("form-control")));
+
         WebElement username = waitForWebElement(driver, By.className("form-control"));
         username.sendKeys("admin");
 
-//        WebElement password = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("password")));
+
         WebElement password = waitForWebElement(driver, By.name("password"));
         password.sendKeys("cubesqa");
 
-//        WebElement login = wait.until(ExpectedConditions.elementToBeClickable(By.className("btn-success")));
+
         WebElement login = waitForWebElement(driver, By.className("btn-success"));
         login.click();
          HomePage hp = new HomePage();

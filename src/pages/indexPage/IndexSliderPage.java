@@ -19,20 +19,13 @@ import pages.basics.Page;
  * @author SonjaAleksa
  */
 public class IndexSliderPage extends Page {
-//     private void linkTypeCombo(WebDriver driver) {
-//        WebElement linkType = waitForElementClickability(driver, By.id("link_type"));
-//
-//        Select combo = new Select(linkType);
-//        combo.selectByValue("InternalLink");
-//    }
 
     private void clickOnAddIndex(WebDriver driver) {
         clickOnElement(driver, By.className("glyphicon-plus"));
     }
 
     private String setInternalLinkUrl(WebDriver driver, By locator) {
-//      WebElement internalLinkUrl = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("internal_link_url")));
-//        internalLinkUrl.sendKeys(PageUtilities.getRandomUrl());
+
         return sendUrlOnField(driver, By.id("internal_link_url"));
     }
 
@@ -47,7 +40,6 @@ public class IndexSliderPage extends Page {
 
     public IndexSlider createNewIndexSlider(WebDriver driver) {
         IndexSlider is = new IndexSlider();
-
 
         clickOnElement(driver, By.className("glyphicon-plus"));
         is.setTitle(sendTextOnField(driver, By.id("title")));
@@ -64,8 +56,7 @@ public class IndexSliderPage extends Page {
         clickOnSave(driver);
 
         WebElement lastRow = findLastRow(driver);
-//        WebElement disableButton = lastRow.findElement(By.xpath("//*[@id='rows-table']/tbody/tr[22]/td[7]/div/button[1]"));
-//        String id = disableButton.getAttribute("data-index-slide-id");
+
         String id = lastRow.getAttribute("data-index-slide-id");
         is.setId(Integer.valueOf(id));
         return is;
@@ -74,7 +65,7 @@ public class IndexSliderPage extends Page {
 
     public IndexSlider editIndexSlider(WebDriver driver) {
         IndexSlider is = new IndexSlider();
-//        is.setId(getIdFromWeb(driver));
+
         choosOptionFromLastRow(driver, By.className("glyphicon-pencil"));
         is.setTitle(sendTextOnField(driver, By.id("title")));
         is.setDescription(sendTextOnField(driver, By.id("description")));

@@ -60,4 +60,19 @@ password: cubesqa
 7.1. Test proverava da li je entitet izbrisan iz baze
 
 
+####KREIRANJE NOVOG USERA#####
+8. Korisnik bira ‘All Users’ i bira opciju ‘Add User’
+8.1. Korisnik unosi proizvoljne vrednosti za userName, firstName, lastName i email polja
+8.2. Korisnik bira opciju ‘Save’
+8.3. Test proverava da li su promene sacuvane u bazi
+
+####EDITOVANJE USERA####
+9. Korisnik bira poslednjeg usera iz tabele i bira opciju ‘Edit’
+9.1. Korisnik unosi proizvoljne vrednosti za userName, firstName, lastName i email polja
+9.2. Korisnik bira opciju ’Save’	
+9.3. Test procreava da li su promene sacuvane u bazi
+####BRISANJE USERA####
+10. Korisnik bira poslednjeg usera iz tabele i bira opciju ‘Delete’
+10.1 Test procreava da li je entitet izbrisan iz bake
+
 
